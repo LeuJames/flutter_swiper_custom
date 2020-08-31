@@ -862,7 +862,7 @@ class _StackViewState extends _CustomLayoutStateBase<_StackSwiper> {
   void _updateValues() {
     if (widget.scrollDirection == Axis.horizontal) {
       double space = (_swiperWidth - widget.itemWidth) / 2;
-      offsets = [-2*space, -2(space / 3 * 2), -2*(space / 3), 0.0, _swiperWidth]; //edited here, added 2's
+      offsets = [-space, -space / 3 * 2, -space / 3, 0.0, _swiperWidth];
     } else {
       double space = (_swiperHeight - widget.itemHeight) / 2;
       offsets = [-space, -space / 3 * 2, -space / 3, 0.0, _swiperHeight];
