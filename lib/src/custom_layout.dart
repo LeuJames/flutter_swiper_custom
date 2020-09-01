@@ -227,7 +227,7 @@ abstract class _CustomLayoutStateBase<T extends _SubSwiper> extends State<T>
                     ? details.globalPosition.dx
                     : details.globalPosition.dy) -
                 _currentPos) /
-            -swiperWidth /
+            _swiperWidth /
             2;
     // no loop ?
     if (!widget.loop) {
