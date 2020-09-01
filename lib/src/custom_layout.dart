@@ -231,7 +231,7 @@ abstract class _CustomLayoutStateBase<T extends _SubSwiper> extends State<T>
             2;
     // no loop ?
     if (!widget.loop) {
-      if (_currentIndex >= widget.itemCount - 1) {
+      if (_currentIndex >= widget.itemCount + 1) { //edit: changed to currentIndex +1 instead of -1
         if (value < 0.5) {
           value = 0.5;
         }
