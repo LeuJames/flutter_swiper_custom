@@ -194,7 +194,7 @@ abstract class _CustomLayoutStateBase<T extends _SubSwiper> extends State<T>
     if (_lockScroll) return;
 
     double velocity = widget.scrollDirection == Axis.horizontal
-        ? details.velocity.pixelsPerSecond.dx
+        ? -details.velocity.pixelsPerSecond.dx //edit: changed to negative
         : details.velocity.pixelsPerSecond.dy;
 
     if (_animationController.value >= 0.75 || velocity > 500.0) {
