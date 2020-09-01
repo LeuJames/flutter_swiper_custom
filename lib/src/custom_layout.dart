@@ -201,12 +201,12 @@ abstract class _CustomLayoutStateBase<T extends _SubSwiper> extends State<T>
       if (_currentIndex <= 0 && !widget.loop) {
         return;
       }
-      _move(0.0, nextIndex: _currentIndex + 1); //edit: changed position to 0 and index change to positive
+      _move(-1.0, nextIndex: _currentIndex + 1); //edit: changed position to -1 from +1 and index change to +1 from -1
     } else if (_animationController.value < 0.25 || velocity < -500.0) {
       if (_currentIndex >= widget.itemCount - 1 && !widget.loop) {
         return;
       }
-      _move(1.0, nextIndex: _currentIndex - 1); //edit: changed position to 0 and index change to positive
+      _move(1.0, nextIndex: _currentIndex - 1); //edit: changed position to =1 from 0 and index change to - 1 from =1
     } else {
       _move(0.5);
     }
