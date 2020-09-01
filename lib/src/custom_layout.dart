@@ -430,7 +430,7 @@ class _CustomLayoutState extends _CustomLayoutStateBase<_CustomLayoutSwiper> {
         height: widget.itemHeight ?? double.infinity,
         child: widget.itemBuilder(context, realIndex));
 
-    for (int i = builders.length - 1; i >= 0; --i) {
+    for (int i = 0; i <= builders.length - 1; ++i) { //edit: reversed for loop direction
       TransformBuilder builder = builders[i];
       child = builder.build(index, animationValue, child);
     }
