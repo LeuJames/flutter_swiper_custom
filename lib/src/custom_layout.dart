@@ -200,14 +200,14 @@ abstract class _CustomLayoutStateBase<T extends _SubSwiper> extends State<T>
     if (_animationController.value >= 0.75 || velocity > 500.0) {
       print("swipe right");
       if (_currentIndex >= widget.itemCount && !widget.loop) {  //edit: changed from <= 0 to >= widget.itemCount
-        print("can't move right")
+        print("can't move right");
         return;
       }
       _move(1.0, nextIndex: _currentIndex + 1); //edit: changed index to +1 from -1
     } else if (_animationController.value < 0.25 || velocity < -500.0) {
             print("swipe left");
       if (_currentIndex <= 0 && !widget.loop) { //edit: changed from >= widget.itemCount to <= 0
-        print("can't move left")
+        print("can't move left");
         return;
       }
       _move(1.0, nextIndex: _currentIndex - 1); //edit: changed position to =1 from 0 and index change to - 1 from =1
