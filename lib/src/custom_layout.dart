@@ -90,7 +90,7 @@ abstract class _CustomLayoutStateBase<T extends _SubSwiper> extends State<T>
 
     double animationValue = _animation.value;
 
-    for (int i = _animationCount; i > 0 ; --i) { //edit: reversed for loop
+    for (int i = 0; i < _animationCount ; ++i) {
       int realIndex = _currentIndex + i + _startIndex;
       realIndex = realIndex % widget.itemCount;
       if (realIndex < 0) {
@@ -201,12 +201,12 @@ abstract class _CustomLayoutStateBase<T extends _SubSwiper> extends State<T>
       if (_currentIndex <= 0 && !widget.loop) {
         return;
       }
-      _move(1.0, nextIndex: _currentIndex - 1);
+      _move(0.0, nextIndex: _currentIndex + 1); //edit: changed position to 0 and index change to positive
     } else if (_animationController.value < 0.25 || velocity < -500.0) {
       if (_currentIndex >= widget.itemCount - 1 && !widget.loop) {
         return;
       }
-      _move(0.0, nextIndex: _currentIndex + 1);
+      _move(1.0, nextIndex: _currentIndex - 1); //edit: changed position to 0 and index change to positive
     } else {
       _move(0.5);
     }
