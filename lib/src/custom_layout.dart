@@ -90,8 +90,8 @@ abstract class _CustomLayoutStateBase<T extends _SubSwiper> extends State<T>
 
     double animationValue = _animation.value;
 
-    for (int i = _animationCount; i > 0 ; --i) { //edit: reversed loop direction
-      int realIndex = _currentIndex + i + _startIndex;
+    for (int i = 0; i < _animationCount ; ++i) {
+      int realIndex = _animationCount - i - _startIndex; //edit: was  int realIndex = _currentIndex + i + _startIndex
       realIndex = realIndex % widget.itemCount;
       if (realIndex < 0) {
         realIndex += widget.itemCount;
