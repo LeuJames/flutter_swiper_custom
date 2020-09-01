@@ -206,7 +206,7 @@ abstract class _CustomLayoutStateBase<T extends _SubSwiper> extends State<T>
       if (_currentIndex >= widget.itemCount - 1 && !widget.loop) {
         return;
       }
-      _move(0.0, nextIndex: _currentIndex + 1);
+      _move(0.0, nextIndex: _currentIndex - 1);//edit: changed to currentIndex -1 instead of +1
     } else {
       _move(0.5);
     }
@@ -231,13 +231,13 @@ abstract class _CustomLayoutStateBase<T extends _SubSwiper> extends State<T>
             2;
     // no loop ?
     if (!widget.loop) {
-      if (_currentIndex >= widget.itemCount + 1) { //edit: changed to currentIndex +1 instead of -1
+      if (_currentIndex >= widget.itemCount - 1) {
         if (value < 0.5) {
-          value = 0.5;
+          value = -0.5; //edit: changed to currentIndex -.5 instead of .5
         }
       } else if (_currentIndex <= 0) {
         if (value > 0.5) {
-          value = 0.5;
+          value = -0.5; //edit: changed to currentIndex -.5 instead of .5
         }
       }
     }
