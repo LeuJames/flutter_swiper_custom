@@ -194,14 +194,14 @@ abstract class _CustomLayoutStateBase<T extends _SubSwiper> extends State<T>
     if (_lockScroll) return;
 
     double velocity = widget.scrollDirection == Axis.horizontal
-        ? -details.velocity.pixelsPerSecond.dx //edited here added negative sign
+        ? details.velocity.pixelsPerSecond.dx
         : details.velocity.pixelsPerSecond.dy;
 
     if (_animationController.value >= 0.75 || velocity > 500.0) {
       if (_currentIndex <= 0 && !widget.loop) {
         return;
       }
-      _move(1.0, nextIndex: _currentIndex - 1);
+      _move(1.0, nextIndex: _currentIndex + 1); //edit: changed to currentIndex +1 instead of -1
     } else if (_animationController.value < 0.25 || velocity < -500.0) {
       if (_currentIndex >= widget.itemCount - 1 && !widget.loop) {
         return;
@@ -227,7 +227,7 @@ abstract class _CustomLayoutStateBase<T extends _SubSwiper> extends State<T>
                     ? details.globalPosition.dx
                     : details.globalPosition.dy) -
                 _currentPos) /
-            -_swiperWidth / //edited here added negative sign
+            -swiperWidth /
             2;
     // no loop ?
     if (!widget.loop) {
