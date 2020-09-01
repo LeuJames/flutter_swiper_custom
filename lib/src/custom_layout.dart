@@ -201,12 +201,12 @@ abstract class _CustomLayoutStateBase<T extends _SubSwiper> extends State<T>
       if (_currentIndex <= 0 && !widget.loop) {
         return;
       }
-      _move(1.0, nextIndex: _currentIndex + 1); //edit: changed to currentIndex +1 instead of -1
+      _move(1.0, nextIndex: _currentIndex - 1);
     } else if (_animationController.value < 0.25 || velocity < -500.0) {
       if (_currentIndex >= widget.itemCount - 1 && !widget.loop) {
         return;
       }
-      _move(0.0, nextIndex: _currentIndex - 1);//edit: changed to currentIndex -1 instead of +1
+      _move(0.0, nextIndex: _currentIndex + 1);
     } else {
       _move(0.5);
     }
@@ -233,11 +233,11 @@ abstract class _CustomLayoutStateBase<T extends _SubSwiper> extends State<T>
     if (!widget.loop) {
       if (_currentIndex >= widget.itemCount - 1) {
         if (value < 0.5) {
-          value = -0.5; //edit: changed to currentIndex -.5 instead of .5
+          value = 0.5;
         }
       } else if (_currentIndex <= 0) {
         if (value > 0.5) {
-          value = -0.5; //edit: changed to currentIndex -.5 instead of .5
+          value = 0.5;
         }
       }
     }
@@ -426,7 +426,7 @@ class _CustomLayoutState extends _CustomLayoutStateBase<_CustomLayoutSwiper> {
         height: widget.itemHeight ?? double.infinity,
         child: widget.itemBuilder(context, realIndex));
 
-    for (int i = builders.length - 1; i >= 0; --i) {
+    for (int i = 0; i >= builders.length - 1; i++) { //edit: reversed direction of loop
       TransformBuilder builder = builders[i];
       child = builder.build(index, animationValue, child);
     }
