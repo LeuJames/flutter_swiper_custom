@@ -90,7 +90,7 @@ abstract class _CustomLayoutStateBase<T extends _SubSwiper> extends State<T>
 
     double animationValue = _animation.value;
 
-    for (int i = 0; i < _animationCount; ++i) {
+    for (int i = _animationCount; i > 0 ; --i) { //edit: reversed for loop
       int realIndex = _currentIndex + i + _startIndex;
       realIndex = realIndex % widget.itemCount;
       if (realIndex < 0) {
@@ -426,7 +426,7 @@ class _CustomLayoutState extends _CustomLayoutStateBase<_CustomLayoutSwiper> {
         height: widget.itemHeight ?? double.infinity,
         child: widget.itemBuilder(context, realIndex));
 
-    for (int i = 0; i >= builders.length - 1; i++) { //edit: reversed direction of loop
+    for (int i = builders.length - 1; i >= 0; --i) {
       TransformBuilder builder = builders[i];
       child = builder.build(index, animationValue, child);
     }
